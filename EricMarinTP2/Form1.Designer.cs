@@ -118,6 +118,7 @@
             this.dateTimePickerFin.Name = "dateTimePickerFin";
             this.dateTimePickerFin.Size = new System.Drawing.Size(161, 23);
             this.dateTimePickerFin.TabIndex = 6;
+            this.dateTimePickerFin.ValueChanged += new System.EventHandler(this.dateTimePickerFin_ValueChanged);
             // 
             // labelDebut
             // 

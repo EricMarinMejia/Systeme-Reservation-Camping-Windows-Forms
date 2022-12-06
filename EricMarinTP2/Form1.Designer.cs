@@ -82,7 +82,7 @@
             // pictureBoxCamping
             // 
             this.pictureBoxCamping.BackColor = System.Drawing.Color.Wheat;
-            this.pictureBoxCamping.Location = new System.Drawing.Point(111, 129);
+            this.pictureBoxCamping.Location = new System.Drawing.Point(54, 22);
             this.pictureBoxCamping.Name = "pictureBoxCamping";
             this.pictureBoxCamping.Size = new System.Drawing.Size(242, 199);
             this.pictureBoxCamping.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -102,6 +102,7 @@
             this.comboBox1.Size = new System.Drawing.Size(332, 23);
             this.comboBox1.TabIndex = 4;
             this.comboBox1.Text = "Choix de l\'hébergément";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // dateTimePickerDebut
             // 
@@ -163,6 +164,7 @@
             this.panel1.BackColor = System.Drawing.Color.Wheat;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.dateTimePickerFin);
+            this.panel1.Controls.Add(this.pictureBoxCamping);
             this.panel1.Location = new System.Drawing.Point(61, 108);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(354, 429);
@@ -184,7 +186,6 @@
             this.Controls.Add(this.labelDebut);
             this.Controls.Add(this.dateTimePickerDebut);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.pictureBoxCamping);
             this.Controls.Add(this.labelSousTitre);
             this.Controls.Add(this.labelTitre);
             this.Controls.Add(this.pictureBoxIcon);

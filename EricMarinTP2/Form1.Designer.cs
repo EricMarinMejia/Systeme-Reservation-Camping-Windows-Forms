@@ -110,6 +110,7 @@
             this.dateTimePickerDebut.Name = "dateTimePickerDebut";
             this.dateTimePickerDebut.Size = new System.Drawing.Size(161, 23);
             this.dateTimePickerDebut.TabIndex = 5;
+            this.dateTimePickerDebut.ValueChanged += new System.EventHandler(this.dateTimePickerDebut_ValueChanged);
             // 
             // dateTimePickerFin
             // 
@@ -134,7 +135,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Wheat;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(313, 403);
+            this.label1.Location = new System.Drawing.Point(182, 294);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 16);
             this.label1.TabIndex = 8;
@@ -165,6 +166,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.dateTimePickerFin);
             this.panel1.Controls.Add(this.pictureBoxCamping);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(61, 108);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(354, 429);
@@ -182,7 +184,6 @@
             this.ClientSize = new System.Drawing.Size(479, 558);
             this.Controls.Add(this.buttonQuitter);
             this.Controls.Add(this.buttonRerservation);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelDebut);
             this.Controls.Add(this.dateTimePickerDebut);
             this.Controls.Add(this.comboBox1);
@@ -195,6 +196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamping)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderDate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

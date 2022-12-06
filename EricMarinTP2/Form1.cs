@@ -6,5 +6,10 @@ namespace EricMarinTP2
         {
             InitializeComponent();
         }
+
+        private void buttonQuitter_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

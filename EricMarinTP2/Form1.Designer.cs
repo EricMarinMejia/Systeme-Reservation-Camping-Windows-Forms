@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.labelTitre = new System.Windows.Forms.Label();
@@ -41,9 +42,11 @@
             this.buttonRerservation = new System.Windows.Forms.Button();
             this.buttonQuitter = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.errorProviderDate = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamping)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDate)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxIcon
@@ -153,6 +156,7 @@
             this.buttonQuitter.TabIndex = 10;
             this.buttonQuitter.Text = "Quitter";
             this.buttonQuitter.UseVisualStyleBackColor = true;
+            this.buttonQuitter.Click += new System.EventHandler(this.buttonQuitter_Click);
             // 
             // panel1
             // 
@@ -163,6 +167,10 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(354, 429);
             this.panel1.TabIndex = 11;
+            // 
+            // errorProviderDate
+            // 
+            this.errorProviderDate.ContainerControl = this;
             // 
             // Form1
             // 
@@ -186,6 +194,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamping)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +214,6 @@
         private Button buttonRerservation;
         private Button buttonQuitter;
         private Panel panel1;
+        private ErrorProvider errorProviderDate;
     }
 }

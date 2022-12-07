@@ -44,7 +44,7 @@
             // 
             this.labelCamping.AutoSize = true;
             this.labelCamping.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCamping.Location = new System.Drawing.Point(12, 9);
+            this.labelCamping.Location = new System.Drawing.Point(7, 9);
             this.labelCamping.Name = "labelCamping";
             this.labelCamping.Size = new System.Drawing.Size(219, 29);
             this.labelCamping.TabIndex = 1;
@@ -92,6 +92,7 @@
             // 
             // pictureBoxCamping
             // 
+            this.pictureBoxCamping.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxCamping.Location = new System.Drawing.Point(451, 37);
             this.pictureBoxCamping.Name = "pictureBoxCamping";
             this.pictureBoxCamping.Size = new System.Drawing.Size(210, 169);
@@ -131,6 +132,7 @@
             this.Controls.Add(this.labelCamping);
             this.Controls.Add(this.panel1);
             this.Name = "Form3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Affichage des réservations";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamping)).EndInit();
             this.panel1.ResumeLayout(false);

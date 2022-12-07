@@ -82,6 +82,7 @@
             // pictureBoxCamping
             // 
             this.pictureBoxCamping.BackColor = System.Drawing.Color.Wheat;
+            this.pictureBoxCamping.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxCamping.Location = new System.Drawing.Point(54, 22);
             this.pictureBoxCamping.Name = "pictureBoxCamping";
             this.pictureBoxCamping.Size = new System.Drawing.Size(242, 199);
@@ -91,6 +92,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.AllowDrop = true;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Parc du Bic",
@@ -110,6 +112,7 @@
             this.dateTimePickerDebut.Name = "dateTimePickerDebut";
             this.dateTimePickerDebut.Size = new System.Drawing.Size(161, 23);
             this.dateTimePickerDebut.TabIndex = 5;
+            this.dateTimePickerDebut.Value = new System.DateTime(2022, 5, 1, 0, 0, 0, 0);
             this.dateTimePickerDebut.ValueChanged += new System.EventHandler(this.dateTimePickerDebut_ValueChanged);
             // 
             // dateTimePickerFin
@@ -118,6 +121,7 @@
             this.dateTimePickerFin.Name = "dateTimePickerFin";
             this.dateTimePickerFin.Size = new System.Drawing.Size(161, 23);
             this.dateTimePickerFin.TabIndex = 6;
+            this.dateTimePickerFin.Value = new System.DateTime(2022, 10, 31, 0, 0, 0, 0);
             this.dateTimePickerFin.ValueChanged += new System.EventHandler(this.dateTimePickerFin_ValueChanged);
             // 
             // labelDebut
@@ -150,6 +154,7 @@
             this.buttonRerservation.TabIndex = 9;
             this.buttonRerservation.Text = "Réservation";
             this.buttonRerservation.UseVisualStyleBackColor = true;
+            this.buttonRerservation.Click += new System.EventHandler(this.buttonRerservation_Click);
             // 
             // buttonQuitter
             // 
@@ -193,6 +198,7 @@
             this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EricMarinMejiaTP02";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamping)).EndInit();

@@ -93,7 +93,7 @@
             // 
             this.labelCamping.AutoSize = true;
             this.labelCamping.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCamping.Location = new System.Drawing.Point(25, 39);
+            this.labelCamping.Location = new System.Drawing.Point(12, 39);
             this.labelCamping.Name = "labelCamping";
             this.labelCamping.Size = new System.Drawing.Size(219, 29);
             this.labelCamping.TabIndex = 0;
@@ -233,6 +233,7 @@
             // 
             // pictureBoxCamping
             // 
+            this.pictureBoxCamping.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxCamping.Location = new System.Drawing.Point(347, 39);
             this.pictureBoxCamping.Name = "pictureBoxCamping";
             this.pictureBoxCamping.Size = new System.Drawing.Size(210, 175);
@@ -262,6 +263,7 @@
             // 
             // dateTimePickerDebut
             // 
+            this.dateTimePickerDebut.Enabled = false;
             this.dateTimePickerDebut.Location = new System.Drawing.Point(575, 75);
             this.dateTimePickerDebut.Name = "dateTimePickerDebut";
             this.dateTimePickerDebut.Size = new System.Drawing.Size(211, 23);
@@ -280,6 +282,7 @@
             // 
             // dateTimePickerFin
             // 
+            this.dateTimePickerFin.Enabled = false;
             this.dateTimePickerFin.Location = new System.Drawing.Point(575, 129);
             this.dateTimePickerFin.Name = "dateTimePickerFin";
             this.dateTimePickerFin.Size = new System.Drawing.Size(211, 23);
@@ -643,6 +646,7 @@
             this.Controls.Add(this.panel2);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Réservation";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdulte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnfants)).EndInit();

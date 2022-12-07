@@ -24,8 +24,6 @@ namespace EricMarinTP2
         {
             InitializeComponent();
             unCamping = pCamping;
-            dateTimePickerDebut.Value = pDateDebut;
-            dateTimePickerFin.Value = pDateFin;
         }
     }
 }

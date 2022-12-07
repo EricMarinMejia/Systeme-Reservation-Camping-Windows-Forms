@@ -92,10 +92,10 @@
             // labelCamping
             // 
             this.labelCamping.AutoSize = true;
-            this.labelCamping.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelCamping.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelCamping.Location = new System.Drawing.Point(12, 39);
             this.labelCamping.Name = "labelCamping";
-            this.labelCamping.Size = new System.Drawing.Size(219, 29);
+            this.labelCamping.Size = new System.Drawing.Size(175, 23);
             this.labelCamping.TabIndex = 0;
             this.labelCamping.Text = "Nom du Camping";
             // 

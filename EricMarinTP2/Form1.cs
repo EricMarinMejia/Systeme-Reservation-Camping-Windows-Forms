@@ -22,19 +22,19 @@ namespace EricMarinTP2
                 {
                     case 0:
                         imageName = "campingBic.jpg";
-                        unCamping = new Camping(0, "Parc du Bic", "Fichiers/RESERV_BIC.txt", 10, pictureBoxCamping.ImageLocation);
+                        unCamping = new Camping(0, "Parc du Bic", "Fichiers/RESERV_BIC.txt", 10, imageName);
                         break;
                     case 1:
                         imageName = "campingOrford.jpg";
-                        unCamping = new Camping(1, "Parc du Mont-Orford", "Fichiers/RESERV_ORFORD.txt", 8, pictureBoxCamping.ImageLocation);
+                        unCamping = new Camping(1, "Parc du Mont-Orford", "Fichiers/RESERV_ORFORD.txt", 8, imageName);
                         break;
                     case 2:
                         imageName = "campingPerce.jpg";
-                        unCamping = new Camping(2, "Camping du Rocher Percé", "Fichiers/RESERV_PERCE.txt", 5, pictureBoxCamping.ImageLocation);
+                        unCamping = new Camping(2, "Camping du Rocher Percé", "Fichiers/RESERV_PERCE.txt", 5, imageName);
                         break;
                     case 3:
                         imageName = "campingStSimeon.jpg";
-                        unCamping = new Camping(3, "Camping de la plage de St-Siméon", "Fichiers/RESERV_SIMEON.txt", 10, pictureBoxCamping.ImageLocation);
+                        unCamping = new Camping(3, "Camping de la plage de St-Siméon", "Fichiers/RESERV_SIMEON.txt", 10, imageName);
                         break;
                     default:
                         imageName = "";

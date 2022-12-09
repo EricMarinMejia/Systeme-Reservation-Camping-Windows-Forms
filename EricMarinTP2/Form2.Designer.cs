@@ -132,6 +132,11 @@
             // numericUpDownAdulte
             // 
             this.numericUpDownAdulte.Location = new System.Drawing.Point(25, 166);
+            this.numericUpDownAdulte.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             this.numericUpDownAdulte.Name = "numericUpDownAdulte";
             this.numericUpDownAdulte.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownAdulte.TabIndex = 5;
@@ -139,6 +144,11 @@
             // numericUpDownEnfants
             // 
             this.numericUpDownEnfants.Location = new System.Drawing.Point(178, 164);
+            this.numericUpDownEnfants.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             this.numericUpDownEnfants.Name = "numericUpDownEnfants";
             this.numericUpDownEnfants.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownEnfants.TabIndex = 6;
@@ -648,6 +658,7 @@
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Réservation";
+            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdulte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnfants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamping)).EndInit();

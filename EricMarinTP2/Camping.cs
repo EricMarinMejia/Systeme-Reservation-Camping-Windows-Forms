@@ -44,7 +44,7 @@ namespace EricMarinTP2
             set { cheminImage = value; }
         }
 
-        public Camping()
+       /* public Camping()
         {
             nbCamping = 0;
             nomCamping = "";
@@ -52,7 +52,7 @@ namespace EricMarinTP2
             nbTerrains = 0;
             cheminImage = "";
         }
-
+       */
         public Camping(int pNbCamping, string pNomCamping, string pNomFichierCamping, int pNbTerrains, string pCheminImage)
         {
             nbCamping = pNbCamping;

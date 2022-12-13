@@ -14,6 +14,7 @@ namespace EricMarinTP2
 {
     public partial class Form2 : Form
     {
+
         string[] nomTerrains = {"Terrain 1", "Terrain 2", "Terrain 3", "Terrain 4", "Terrain 5", "Terrain 6", "Terrain 7", "Terrain 8", "Terrain 9", "Terrain 10"};
         string cheminFichier = "";
         Camping unCamping = null;
@@ -40,12 +41,14 @@ namespace EricMarinTP2
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            //Mettre le nom dans le titre, l'image, initialiser le nombre de terrains, le tableau de bool
             labelCamping.Text = unCamping.NomCamping;
             pictureBoxCamping.ImageLocation = chemin + unCamping.CheminImage;
             nbTerrains = unCamping.NbTerrains;
             campingDispo = new Boolean[nbTerrains, nbJours];
             System.Diagnostics.Debug.WriteLine(campingDispo.Length);
 
+            //Ajouter les terrains disponible au comboBox
             for (int i = 0; i < unCamping.NbTerrains; i++)
             {
                 comboBoxTerrain.Items.Add(nomTerrains[i]);
@@ -68,6 +71,7 @@ namespace EricMarinTP2
                     break;
             }
 
+            //Mettre à false toutes les cases du tableau
             for (int i = 0; i < unCamping.NbTerrains; i++)
             {
                 for (int j = 0; j < nbJours; j++)
@@ -78,12 +82,10 @@ namespace EricMarinTP2
 
             System.Diagnostics.Debug.WriteLine(dateTimePickerDebut.Value);
 
+            //Lire le fichier texte et ajouter les réservations qui existent déjà
             lectureFichier(cheminFichier);
+            //Vérififer les disponibilités et changer la couleur des richTextBox
             verifDispo();
-
-            //LIRE LE FICHIER TEXTE POUR SAVOIR SI YA DEJA DESRESERVATION, les ajouter au tableau
-            //Faire une méthode qui rajoute les dates déjà présentes dans les fichiers
-            //Faire une méthode qui vérifie les dispo et colore les richTextBox
 
         }
 
@@ -101,9 +103,11 @@ namespace EricMarinTP2
                     {
                         string ligneCurrent = lecteur.ReadLine();
 
+                        //Si la ligne n'est pas vide
                         if (ligneCurrent != null)
                         {
                             string[] ligne = ligneCurrent.Split(";");
+                            //Récuperer les dates de début et de fin
                             string debutString = ligne[2];
                             string finString = ligne[3];
 
@@ -113,6 +117,7 @@ namespace EricMarinTP2
                             int numJourDebut = debutDate.DayOfYear;
                             int numJourFin = finDate.DayOfYear;
 
+                            //Mettre à true les cases correspondantes et faire +1 pour le numéro de réservations
                             for (int ctr = numJourDebut; ctr < numJourFin; ctr++)
                             {
                                 campingDispo[int.Parse(ligne[4]), ctr] = true;
@@ -134,6 +139,7 @@ namespace EricMarinTP2
 
         private void verifDispo()
         {
+            //Changer les cases à vert
             richTextBox1.BackColor = Color.Green;
             richTextBox2.BackColor = Color.Green;
             richTextBox3.BackColor = Color.Green;
@@ -148,6 +154,7 @@ namespace EricMarinTP2
             int debut = dateTimePickerDebut.Value.DayOfYear;
             int fin = dateTimePickerFin.Value.DayOfYear;
 
+            //Chnager la couleur des cases selon le nombre de terrains du camping et leur disponibilité
             switch (unCamping.NbTerrains)
             {
                 case 5:
@@ -161,7 +168,7 @@ namespace EricMarinTP2
                     {
                         for (int ctr = debut; ctr < fin; ctr++)
                         {
-                            // Terrani 1 : si réserver = change la couleur
+                            // Terrain : si réserver = change la couleur
                             if (campingDispo[0, ctr])
                             {
                                 richTextBox1.BackColor = Color.Red;
@@ -194,7 +201,7 @@ namespace EricMarinTP2
                     {
                         for (int ctr = debut; ctr < fin; ctr++)
                         {
-                            // Terrani 1 : si réserver = change la couleur
+                            // Terrain : si réserver = change la couleur
                             if (campingDispo[0, ctr])
                             {
                                 richTextBox1.BackColor = Color.Red;
@@ -237,7 +244,7 @@ namespace EricMarinTP2
                     {
                         for (int ctr = debut; ctr < fin; ctr++)
                         {
-                            // Terrani 1 : si réserver = change la couleur
+                            // Terrain  : si réserver = change la couleur
                             if (campingDispo[0, ctr])
                             {
                                 richTextBox1.BackColor = Color.Red;
@@ -284,5 +291,9 @@ namespace EricMarinTP2
             }
         }
 
+        private void buttonQuitter_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

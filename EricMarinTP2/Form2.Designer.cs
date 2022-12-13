@@ -483,6 +483,7 @@
             this.retourAuMenuPrincipalToolStripMenuItem.Name = "retourAuMenuPrincipalToolStripMenuItem";
             this.retourAuMenuPrincipalToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.retourAuMenuPrincipalToolStripMenuItem.Text = "Retour au menu principal";
+            this.retourAuMenuPrincipalToolStripMenuItem.Click += new System.EventHandler(this.retourAuMenuPrincipalToolStripMenuItem_Click);
             // 
             // panel1
             // 

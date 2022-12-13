@@ -295,5 +295,10 @@ namespace EricMarinTP2
         {
             this.Close();
         }
+
+        private void retourAuMenuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

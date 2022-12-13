@@ -17,6 +17,7 @@ namespace EricMarinTP2
         string[] nomTerrains = {"Terrain 1", "Terrain 2", "Terrain 3", "Terrain 4", "Terrain 5", "Terrain 6", "Terrain 7", "Terrain 8", "Terrain 9", "Terrain 10"};
         string cheminFichier = "";
         Camping unCamping = null;
+        Reservation uneReservation = null;
         private string chemin = Application.StartupPath + "\\";
         int nombreReserv = -1;
 
@@ -39,8 +40,6 @@ namespace EricMarinTP2
 
         private void Form2_Load(object sender, EventArgs e)
         {
-           // unCamping = new Camping();
-           // ecrire_json(unCamping);
             labelCamping.Text = unCamping.NomCamping;
             pictureBoxCamping.ImageLocation = chemin + unCamping.CheminImage;
             nbTerrains = unCamping.NbTerrains;
@@ -52,6 +51,7 @@ namespace EricMarinTP2
                 comboBoxTerrain.Items.Add(nomTerrains[i]);
             }
 
+            //Choisir le fichier de réservation
             switch (unCamping.NomCamping)
             {
                 case "Parc du Bic":
@@ -67,6 +67,19 @@ namespace EricMarinTP2
                     cheminFichier = chemin + "Fichiers\\RESERV_SIMEON.txt";
                     break;
             }
+
+            for (int i = 0; i < unCamping.NbTerrains; i++)
+            {
+                for (int j = 0; j < nbJours; j++)
+                {
+                    campingDispo[i, j] = false;
+                }
+            }
+
+            System.Diagnostics.Debug.WriteLine(dateTimePickerDebut.Value);
+
+            lectureFichier(cheminFichier);
+            verifDispo();
 
             //LIRE LE FICHIER TEXTE POUR SAVOIR SI YA DEJA DESRESERVATION, les ajouter au tableau
             //Faire une méthode qui rajoute les dates déjà présentes dans les fichiers
@@ -84,50 +97,192 @@ namespace EricMarinTP2
 
                     StreamReader lecteur = new StreamReader(cheminFichier);
 
+                    do
+                    {
+                        string ligneCurrent = lecteur.ReadLine();
+
+                        if (ligneCurrent != null)
+                        {
+                            string[] ligne = ligneCurrent.Split(";");
+                            string debutString = ligne[2];
+                            string finString = ligne[3];
+
+                            DateTime debutDate = DateTime.Parse(debutString);
+                            DateTime finDate = DateTime.Parse(finString);
+
+                            int numJourDebut = debutDate.DayOfYear;
+                            int numJourFin = finDate.DayOfYear;
+
+                            for (int ctr = numJourDebut; ctr < numJourFin; ctr++)
+                            {
+                                campingDispo[int.Parse(ligne[4]), ctr] = true;
+                                nombreReserv++;
+                            }
+
+                        }
+
+                    } while (!lecteur.EndOfStream );
 
 
                 } catch (Exception ex)
                 {
-
+                    MessageBox.Show(ex.Message);
                 }
             }
 
-
         }
 
-
-      /*  private Camping[] lireJson()
+        private void verifDispo()
         {
-            Camping[] campings;
-            string chemin_locale =  this.chemin + "Fichiers\\";
-            string[] noms_fichiers = Directory.GetFiles(chemin_locale, "*.json");
-            campings = new Camping[noms_fichiers.Length];
-            try {
-                for (int i = 0; i < noms_fichiers.Length; i++)
-                {
-                    string json = File.ReadAllText(noms_fichiers[i]);
-                    campings[i] = JsonSerializer.Deserialize<Camping>(json);
-                }
-            } catch (Exception e)
+            richTextBox1.BackColor = Color.Green;
+            richTextBox2.BackColor = Color.Green;
+            richTextBox3.BackColor = Color.Green;
+            richTextBox4.BackColor = Color.Green;
+            richTextBox5.BackColor = Color.Green;
+            richTextBox6.BackColor = Color.Green;
+            richTextBox7.BackColor = Color.Green;
+            richTextBox8.BackColor = Color.Green;
+            richTextBox9.BackColor = Color.Green;
+            richTextBox10.BackColor = Color.Green;
+
+            int debut = dateTimePickerDebut.Value.DayOfYear;
+            int fin = dateTimePickerFin.Value.DayOfYear;
+
+            switch (unCamping.NbTerrains)
             {
-                MessageBox.Show(e.Message);
+                case 5:
+                    richTextBox6.BackColor = Color.Black;
+                    richTextBox7.BackColor = Color.Black;
+                    richTextBox8.BackColor = Color.Black;
+                    richTextBox9.BackColor = Color.Black;
+                    richTextBox10.BackColor = Color.Black;
+
+                    if (debut < fin)
+                    {
+                        for (int ctr = debut; ctr < fin; ctr++)
+                        {
+                            // Terrani 1 : si réserver = change la couleur
+                            if (campingDispo[0, ctr])
+                            {
+                                richTextBox1.BackColor = Color.Red;
+                            }
+                            if (campingDispo[1, ctr])
+                            {
+                                richTextBox2.BackColor = Color.Red;
+                            }
+                            if (campingDispo[2, ctr])
+                            {
+                                richTextBox3.BackColor = Color.Red;
+                            }
+                            if (campingDispo[3, ctr])
+                            {
+                                richTextBox4.BackColor = Color.Red;
+                            }
+                            if (campingDispo[4, ctr])
+                            {
+                                richTextBox5.BackColor = Color.Red;
+                            }
+                        }
+                    }
+                    break;
+                case 8:
+
+                    richTextBox9.BackColor = Color.Black;
+                    richTextBox10.BackColor = Color.Black;
+
+                    if (debut < fin)
+                    {
+                        for (int ctr = debut; ctr < fin; ctr++)
+                        {
+                            // Terrani 1 : si réserver = change la couleur
+                            if (campingDispo[0, ctr])
+                            {
+                                richTextBox1.BackColor = Color.Red;
+                            }
+                            if (campingDispo[1, ctr])
+                            {
+                                richTextBox2.BackColor = Color.Red;
+                            }
+                            if (campingDispo[2, ctr])
+                            {
+                                richTextBox3.BackColor = Color.Red;
+                            }
+                            if (campingDispo[3, ctr])
+                            {
+                                richTextBox4.BackColor = Color.Red;
+                            }
+                            if (campingDispo[4, ctr])
+                            {
+                                richTextBox5.BackColor = Color.Red;
+                            }
+                            if (campingDispo[5, ctr])
+                            {
+                                richTextBox6.BackColor = Color.Red;
+                            }
+                            if (campingDispo[6, ctr])
+                            {
+                                richTextBox7.BackColor = Color.Red;
+                            }
+                            if (campingDispo[7, ctr])
+                            {
+                                richTextBox8.BackColor = Color.Red;
+                            }
+                        }
+                    }
+
+                    break;
+                case 10:
+
+                    if (debut < fin)
+                    {
+                        for (int ctr = debut; ctr < fin; ctr++)
+                        {
+                            // Terrani 1 : si réserver = change la couleur
+                            if (campingDispo[0, ctr])
+                            {
+                                richTextBox1.BackColor = Color.Red;
+                            }
+                            if (campingDispo[1, ctr])
+                            {
+                                richTextBox2.BackColor = Color.Red;
+                            }
+                            if (campingDispo[2, ctr])
+                            {
+                                richTextBox3.BackColor = Color.Red;
+                            }
+                            if (campingDispo[3, ctr])
+                            {
+                                richTextBox4.BackColor = Color.Red;
+                            }
+                            if (campingDispo[4, ctr])
+                            {
+                                richTextBox5.BackColor = Color.Red;
+                            }
+                            if (campingDispo[5, ctr])
+                            {
+                                richTextBox6.BackColor = Color.Red;
+                            }
+                            if (campingDispo[6, ctr])
+                            {
+                                richTextBox7.BackColor = Color.Red;
+                            }
+                            if (campingDispo[7, ctr])
+                            {
+                                richTextBox8.BackColor = Color.Red;
+                            }
+                            if (campingDispo[8, ctr])
+                            {
+                                richTextBox9.BackColor = Color.Red;
+                            }
+                            if (campingDispo[9, ctr])
+                            {
+                                richTextBox10.BackColor = Color.Red;
+                            }
+                        }
+                    }
+                    break;
             }
-            return campings;
         }
-
-        private void ecrire_json(Camping camping)
-        {
-            string chemin_locale = this.chemin + "Fichiers\\";
-            try
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                File.WriteAllText(chemin + "Fichiers\\fichier_test.json", JsonSerializer.Serialize(camping, options));
-            } catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-
-        }*/
 
     }
 }

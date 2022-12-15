@@ -26,6 +26,8 @@ namespace EricMarinTP2
         bool[,] campingDispo;
 
         bool nomCorrect = true;
+        bool prenomCorrect = true;
+        bool courrielCorrect = true;
 
         public Form2()
         {
@@ -310,7 +312,7 @@ namespace EricMarinTP2
 
             if (string.IsNullOrEmpty(text))
             {
-                errorProviderNom.SetError(textBoxNom, "The name cannot be empty");
+                errorProviderNom.SetError(textBoxNom, "Le nom ne peut pas être vide");
                 nomCorrect = false;
             } else
             {
@@ -318,7 +320,7 @@ namespace EricMarinTP2
                 {
                     if (!Char.IsLetter(c) && !Char.IsControl(c) && !Char.IsWhiteSpace(c) && c != '\'' && c != '-')
                     {
-                        errorProviderNom.SetError(textBoxNom, "The name cannot be empty");
+                        errorProviderNom.SetError(textBoxNom, "Le nom ne peut contenir que de lettres, espaces, ' ou -");
                         nomCorrect = false;
                     }
                 }
@@ -329,7 +331,34 @@ namespace EricMarinTP2
                 errorProviderNom.Clear();
             }
             
-            
+        }
+
+        private void textBoxPrenom_TextChanged(object sender, EventArgs e)
+        {
+            string text = textBoxPrenom.Text;
+            prenomCorrect = true;
+
+            if (string.IsNullOrEmpty(text))
+            {
+                errorProviderPrenom.SetError(textBoxPrenom, "Le prenom ne peut pas être vide");
+                prenomCorrect = false;
+            }
+            else
+            {
+                foreach (char c in text)
+                {
+                    if (!Char.IsLetter(c) && !Char.IsControl(c) && !Char.IsWhiteSpace(c) && c != '\'' && c != '-')
+                    {
+                        errorProviderPrenom.SetError(textBoxPrenom, "Le prenom ne peut contenir que de lettres, espaces, ' ou -");
+                        prenomCorrect = false;
+                    }
+                }
+            }
+
+            if (prenomCorrect)
+            {
+                errorProviderPrenom.Clear();
+            }
         }
     }
 }

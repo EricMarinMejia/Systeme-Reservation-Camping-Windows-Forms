@@ -216,6 +216,7 @@
             this.textBoxPrenom.Name = "textBoxPrenom";
             this.textBoxPrenom.Size = new System.Drawing.Size(273, 23);
             this.textBoxPrenom.TabIndex = 10;
+            this.textBoxPrenom.TextChanged += new System.EventHandler(this.textBoxPrenom_TextChanged);
             // 
             // labelCourriel
             // 

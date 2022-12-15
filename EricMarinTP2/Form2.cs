@@ -360,5 +360,29 @@ namespace EricMarinTP2
                 errorProviderPrenom.Clear();
             }
         }
+
+        private void textBoxCourriel_TextChanged(object sender, EventArgs e)
+        {
+            bool contientAComercial = false;
+            string text = textBoxCourriel.Text;
+
+            foreach (char c in text)
+            {
+                if (c == '@')
+                {
+                    contientAComercial = true;
+                }
+            }
+
+            if (contientAComercial)
+            {
+                errorProviderCourriel.Clear();
+                courrielCorrect = true;
+            } else
+            {
+                errorProviderCourriel.SetError(textBoxCourriel, "Le courriel doit contenir @ et ne peut pas être vide");
+                courrielCorrect = false;
+            }
+        }
     }
 }

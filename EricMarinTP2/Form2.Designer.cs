@@ -235,6 +235,7 @@
             this.textBoxCourriel.Name = "textBoxCourriel";
             this.textBoxCourriel.Size = new System.Drawing.Size(273, 23);
             this.textBoxCourriel.TabIndex = 12;
+            this.textBoxCourriel.TextChanged += new System.EventHandler(this.textBoxCourriel_TextChanged);
             // 
             // labelTypePaiement
             // 

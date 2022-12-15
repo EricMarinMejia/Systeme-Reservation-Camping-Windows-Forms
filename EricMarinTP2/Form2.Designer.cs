@@ -169,6 +169,7 @@
             this.numericUpDownEnfants.Name = "numericUpDownEnfants";
             this.numericUpDownEnfants.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownEnfants.TabIndex = 6;
+            this.numericUpDownEnfants.ValueChanged += new System.EventHandler(this.numericUpDownEnfants_ValueChanged);
             // 
             // labelNbAdultes
             // 

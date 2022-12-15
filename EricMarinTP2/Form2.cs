@@ -411,5 +411,10 @@ namespace EricMarinTP2
             }
 
         }
+
+        private void numericUpDownEnfants_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownAdulte_ValueChanged(sender, e);
+        }
     }
 }

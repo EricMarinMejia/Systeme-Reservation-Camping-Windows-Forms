@@ -18,13 +18,14 @@ namespace EricMarinTP2
         string[] nomTerrains = {"Terrain 1", "Terrain 2", "Terrain 3", "Terrain 4", "Terrain 5", "Terrain 6", "Terrain 7", "Terrain 8", "Terrain 9", "Terrain 10"};
         string cheminFichier = "";
         Camping unCamping = null;
-        Reservation uneReservation = null;
         private string chemin = Application.StartupPath + "\\";
         int nombreReserv = -1;
 
         static int nbTerrains = 0;
         const int nbJours = 365;
         bool[,] campingDispo;
+
+        bool nomCorrect = true;
 
         public Form2()
         {
@@ -299,6 +300,36 @@ namespace EricMarinTP2
         private void retourAuMenuPrincipalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void textBoxNom_TextChanged(object sender, EventArgs e)
+        {
+
+            string text = textBoxNom.Text;
+            nomCorrect = true;
+
+            if (string.IsNullOrEmpty(text))
+            {
+                errorProviderNom.SetError(textBoxNom, "The name cannot be empty");
+                nomCorrect = false;
+            } else
+            {
+                foreach (char c in text)
+                {
+                    if (!Char.IsLetter(c) && !Char.IsControl(c) && !Char.IsWhiteSpace(c) && c != '\'' && c != '-')
+                    {
+                        errorProviderNom.SetError(textBoxNom, "The name cannot be empty");
+                        nomCorrect = false;
+                    }
+                }
+            }
+            
+            if (nomCorrect)
+            {
+                errorProviderNom.Clear();
+            }
+            
+            
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelCamping = new System.Windows.Forms.Label();
             this.labelTerrains = new System.Windows.Forms.Label();
             this.comboBoxTerrain = new System.Windows.Forms.ComboBox();
@@ -42,7 +43,7 @@
             this.labelCourriel = new System.Windows.Forms.Label();
             this.textBoxCourriel = new System.Windows.Forms.TextBox();
             this.labelTypePaiement = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxPaiement = new System.Windows.Forms.ComboBox();
             this.pictureBoxCamping = new System.Windows.Forms.PictureBox();
             this.textBoxFacture = new System.Windows.Forms.TextBox();
             this.labelDebut = new System.Windows.Forms.Label();
@@ -82,12 +83,26 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.errorProviderTerrains = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderAdultes = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderEnfants = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderNom = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderPrenom = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderCourriel = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderTypeDePaiement = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdulte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnfants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamping)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTerrains)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAdultes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEnfants)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCourriel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTypeDePaiement)).BeginInit();
             this.SuspendLayout();
             // 
             // labelCamping
@@ -182,6 +197,7 @@
             this.textBoxNom.Name = "textBoxNom";
             this.textBoxNom.Size = new System.Drawing.Size(273, 23);
             this.textBoxNom.TabIndex = 8;
+            this.textBoxNom.TextChanged += new System.EventHandler(this.textBoxNom_TextChanged);
             // 
             // labelPrenom
             // 
@@ -230,17 +246,17 @@
             this.labelTypePaiement.TabIndex = 13;
             this.labelTypePaiement.Text = "Type de paiement :";
             // 
-            // comboBox1
+            // comboBoxPaiement
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxPaiement.FormattingEnabled = true;
+            this.comboBoxPaiement.Items.AddRange(new object[] {
             "Interact",
             "Crédit-Visa",
             "Crédit-MasterCard"});
-            this.comboBox1.Location = new System.Drawing.Point(25, 431);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(273, 23);
-            this.comboBox1.TabIndex = 14;
+            this.comboBoxPaiement.Location = new System.Drawing.Point(25, 431);
+            this.comboBoxPaiement.Name = "comboBoxPaiement";
+            this.comboBoxPaiement.Size = new System.Drawing.Size(273, 23);
+            this.comboBoxPaiement.TabIndex = 14;
             // 
             // pictureBoxCamping
             // 
@@ -628,6 +644,34 @@
             this.statusStrip1.TabIndex = 47;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // errorProviderTerrains
+            // 
+            this.errorProviderTerrains.ContainerControl = this;
+            // 
+            // errorProviderAdultes
+            // 
+            this.errorProviderAdultes.ContainerControl = this;
+            // 
+            // errorProviderEnfants
+            // 
+            this.errorProviderEnfants.ContainerControl = this;
+            // 
+            // errorProviderNom
+            // 
+            this.errorProviderNom.ContainerControl = this;
+            // 
+            // errorProviderPrenom
+            // 
+            this.errorProviderPrenom.ContainerControl = this;
+            // 
+            // errorProviderCourriel
+            // 
+            this.errorProviderCourriel.ContainerControl = this;
+            // 
+            // errorProviderTypeDePaiement
+            // 
+            this.errorProviderTypeDePaiement.ContainerControl = this;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -650,7 +694,7 @@
             this.Controls.Add(this.labelFin);
             this.Controls.Add(this.textBoxFacture);
             this.Controls.Add(this.pictureBoxCamping);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxPaiement);
             this.Controls.Add(this.labelTypePaiement);
             this.Controls.Add(this.textBoxCourriel);
             this.Controls.Add(this.labelCourriel);
@@ -681,6 +725,13 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTerrains)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAdultes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEnfants)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCourriel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTypeDePaiement)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,7 +753,7 @@
         private Label labelCourriel;
         private TextBox textBoxCourriel;
         private Label labelTypePaiement;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxPaiement;
         private PictureBox pictureBoxCamping;
         private TextBox textBoxFacture;
         private Label labelDebut;
@@ -742,5 +793,12 @@
         private RichTextBox richTextBox3;
         private RichTextBox richTextBox7;
         private RichTextBox richTextBox2;
+        private ErrorProvider errorProviderTerrains;
+        private ErrorProvider errorProviderAdultes;
+        private ErrorProvider errorProviderEnfants;
+        private ErrorProvider errorProviderNom;
+        private ErrorProvider errorProviderPrenom;
+        private ErrorProvider errorProviderCourriel;
+        private ErrorProvider errorProviderTypeDePaiement;
     }
 }

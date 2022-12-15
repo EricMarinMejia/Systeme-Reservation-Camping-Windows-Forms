@@ -25,9 +25,11 @@ namespace EricMarinTP2
         const int nbJours = 365;
         bool[,] campingDispo;
 
+        //Vérification des champs
         bool nomCorrect = true;
         bool prenomCorrect = true;
         bool courrielCorrect = true;
+        bool nbPersonnesCorrect = true;
 
         public Form2()
         {
@@ -383,6 +385,31 @@ namespace EricMarinTP2
                 errorProviderCourriel.SetError(textBoxCourriel, "Le courriel doit contenir @ et ne peut pas être vide");
                 courrielCorrect = false;
             }
+        }
+
+        private void numericUpDownAdulte_ValueChanged(object sender, EventArgs e)
+        {
+            int numberAdults = (int)(numericUpDownAdulte.Value);
+            int numberChildren = (int)(numericUpDownEnfants.Value);
+
+            if (numberAdults + numberChildren > 8)
+            {
+                errorProviderAdultes.SetError(numericUpDownAdulte, "Le maximum de personnes permises est de 8");
+                errorProviderEnfants.SetError(numericUpDownEnfants, "Le maximum de personnes permises est de 8");
+                nbPersonnesCorrect = false;
+
+            } else if (numberAdults + numberChildren <= 0)
+            {
+                errorProviderAdultes.SetError(numericUpDownAdulte, "Le minimum de personnes demandés est de 1");
+                errorProviderEnfants.SetError(numericUpDownEnfants, "Le minimum de personnes demandés est de 1");
+                nbPersonnesCorrect = false;
+            } else
+            {
+                nbPersonnesCorrect = true;
+                errorProviderAdultes.Clear();
+                errorProviderEnfants.Clear();
+            }
+
         }
     }
 }

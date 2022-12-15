@@ -156,6 +156,7 @@
             this.numericUpDownAdulte.Name = "numericUpDownAdulte";
             this.numericUpDownAdulte.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownAdulte.TabIndex = 5;
+            this.numericUpDownAdulte.ValueChanged += new System.EventHandler(this.numericUpDownAdulte_ValueChanged);
             // 
             // numericUpDownEnfants
             // 

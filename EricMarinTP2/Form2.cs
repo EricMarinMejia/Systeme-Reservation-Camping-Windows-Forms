@@ -30,6 +30,10 @@ namespace EricMarinTP2
         bool prenomCorrect = true;
         bool courrielCorrect = true;
         bool nbPersonnesCorrect = true;
+        bool terrainCorrect = true;
+
+        List<Reservation> listReserv = new List<Reservation>();
+        Reservation uneReservation;
 
         public Form2()
         {
@@ -111,6 +115,7 @@ namespace EricMarinTP2
                         //Si la ligne n'est pas vide
                         if (ligneCurrent != null)
                         {
+                            nombreReserv++;
                             string[] ligne = ligneCurrent.Split(";");
                             //Récuperer les dates de début et de fin
                             string debutString = ligne[2];
@@ -125,9 +130,11 @@ namespace EricMarinTP2
                             //Mettre à true les cases correspondantes et faire +1 pour le numéro de réservations
                             for (int ctr = numJourDebut; ctr < numJourFin; ctr++)
                             {
-                                campingDispo[int.Parse(ligne[4]), ctr] = true;
-                                nombreReserv++;
+                                campingDispo[int.Parse(ligne[4]), ctr] = true;;
                             }
+
+                            uneReservation = new Reservation(int.Parse(ligne[0]), int.Parse(ligne[1]), DateTime.Parse(ligne[2]), DateTime.Parse(ligne[3]), int.Parse(ligne[4]), ligne[5], ligne[6], ligne[7], int.Parse(ligne[8]), int.Parse(ligne[9]), double.Parse(ligne[10]));
+                            listReserv.Add(uneReservation);
 
                         }
 
@@ -415,6 +422,39 @@ namespace EricMarinTP2
         private void numericUpDownEnfants_ValueChanged(object sender, EventArgs e)
         {
             numericUpDownAdulte_ValueChanged(sender, e);
+        }
+
+        private void comboBoxTerrain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string debutString = dateTimePickerDebut.Text;
+            string finString = dateTimePickerFin.Text;
+
+            DateTime debutDate = DateTime.Parse(debutString);
+            DateTime finDate = DateTime.Parse(finString);
+
+            int numJourDebut = debutDate.DayOfYear;
+            int numJourFin = finDate.DayOfYear;
+            bool terrainOccupe = false;
+
+            //Mettre à true les cases correspondantes et faire +1 pour le numéro de réservations
+            for (int ctr = numJourDebut; ctr < numJourFin; ctr++)
+            {
+                if (campingDispo[comboBoxTerrain.SelectedIndex, ctr] == true)
+                {
+                    terrainOccupe = true;
+                }
+            }
+
+            if (!terrainOccupe) {
+                errorProviderTerrains.Clear();
+                terrainCorrect = true;
+            } else
+            {
+                errorProviderTerrains.SetError(comboBoxTerrain, "Le terrain est déjà occupé");
+                terrainCorrect = false;
+            }
+
         }
     }
 }

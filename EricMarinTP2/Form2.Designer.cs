@@ -133,6 +133,7 @@
             this.comboBoxTerrain.Name = "comboBoxTerrain";
             this.comboBoxTerrain.Size = new System.Drawing.Size(273, 23);
             this.comboBoxTerrain.TabIndex = 2;
+            this.comboBoxTerrain.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerrain_SelectedIndexChanged);
             // 
             // labelNbEnfants
             // 

@@ -10,13 +10,14 @@ namespace EricMarinTP2
     {
         private int numReservation;
         private int numCamping;
+        private DateTime debutReservation;
+        private DateTime finReservation;
+        private int terrainChoisi;
+        private int nbAdultes;
+        private int nbEnfants;
         private string nomClient;
         private string courriel;
         private string typePayement;
-        private DateTime debutReservation;
-        private DateTime finReservation;
-        private int nbAdultes;
-        private int nbEnfants;
         private double cout;
 
         public int NumReservation
@@ -73,7 +74,19 @@ namespace EricMarinTP2
             set { nbEnfants = value; }
         }
 
-        public Reservation(int numReservation, int numCamping, string nomClient, string courriel, string typePayement, DateTime debutReservation, DateTime finReservation, int nbAdultes, int nbEnfants, double cout)
+        public string TypePayement
+        {
+            get { return typePayement; }
+            set { typePayement = value; }
+        }
+
+        public int TerrainChoisi
+        {
+            get { return terrainChoisi; }
+            set { terrainChoisi = value; }
+        }
+
+        public Reservation(int numReservation, int numCamping, DateTime debutReservation, DateTime finReservation, int terrainChoisi, string nomClient, string courriel, string typePayement,  int nbAdultes, int nbEnfants, double cout)
         {
             this.numReservation = numReservation;
             this.numCamping = numCamping;
@@ -85,6 +98,7 @@ namespace EricMarinTP2
             this.nbAdultes = nbAdultes;
             this.nbEnfants = nbEnfants;
             this.cout = cout;
+            this.terrainChoisi = terrainChoisi;
         }
 
     }

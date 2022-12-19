@@ -58,9 +58,9 @@ namespace EricMarinTP2
             DateTime dateDebut = dateTimePickerDebut.Value;
             DateTime dateFin = dateTimePickerFin.Value;
 
-            if (dateDebut.Year != dateFin.Year || dateDebut > dateFin || dateDebut.Month < 5 || dateFin.Month > 10)
+            if (dateDebut.Year != dateFin.Year || dateDebut > dateFin || dateDebut.Month < 5 || dateFin.Month > 10 || dateDebut == dateFin)
             {
-                errorProviderDate.SetError(labelDebut, "La date d'arrivée doit être avant la date de départ et la réservation entre le 1er mai et 31 octobre de la même année");
+                errorProviderDate.SetError(labelDebut, "La date d'arrivée doit être avant la date de départ et la réservation entre le 1er mai et 31 octobre de la même année et différente");
                 dateDebutCorrecte = false;
             } else
             {
@@ -75,9 +75,9 @@ namespace EricMarinTP2
             DateTime dateDebut = dateTimePickerDebut.Value;
             DateTime dateFin = dateTimePickerFin.Value;
 
-            if (dateDebut.Year != dateFin.Year || dateDebut > dateFin || dateDebut.Month < 5 || dateFin.Month > 10)
+            if (dateDebut.Year != dateFin.Year || dateDebut > dateFin || dateDebut.Month < 5 || dateFin.Month > 10 || dateDebut == dateFin)
             {
-                errorProviderDate.SetError(labelDebut, "La date d'arrivée doit être avant la date de départ et la réservation entre le 1er mai et 31 octobre de la même année");
+                errorProviderDate.SetError(labelDebut, "La date d'arrivée doit être avant la date de départ et la réservation entre le 1er mai et 31 octobre de la même année et différente");
                 dateFinCorrecte = false;
             }
             else

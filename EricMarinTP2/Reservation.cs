@@ -86,7 +86,7 @@ namespace EricMarinTP2
             set { terrainChoisi = value; }
         }
 
-        public Reservation(int numReservation, int numCamping, DateTime debutReservation, DateTime finReservation, int terrainChoisi, string nomClient, string courriel, string typePayement,  int nbAdultes, int nbEnfants, double cout)
+        public Reservation(int numReservation, int numCamping, DateTime debutReservation, DateTime finReservation, int terrainChoisi, int nbAdultes, int nbEnfants, string nomClient, string courriel, string typePayement, double cout)
         {
             this.numReservation = numReservation;
             this.numCamping = numCamping;

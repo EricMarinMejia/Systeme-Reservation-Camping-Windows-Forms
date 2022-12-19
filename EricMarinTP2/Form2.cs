@@ -35,6 +35,9 @@ namespace EricMarinTP2
         List<Reservation> listReserv = new List<Reservation>();
         Reservation uneReservation;
 
+        int prixAdulteNuit;
+        int prixEnfantNuit;
+
         public Form2()
         {
             InitializeComponent();
@@ -56,6 +59,7 @@ namespace EricMarinTP2
             nbTerrains = unCamping.NbTerrains;
             campingDispo = new Boolean[nbTerrains, nbJours];
             System.Diagnostics.Debug.WriteLine(campingDispo.Length);
+            toolStripStatusLabel1.Text = "";
 
             //Ajouter les terrains disponible au comboBox
             for (int i = 0; i < unCamping.NbTerrains; i++)
@@ -68,15 +72,23 @@ namespace EricMarinTP2
             {
                 case "Parc du Bic":
                     cheminFichier = chemin + "Fichiers\\RESERV_BIC.txt";
+                    prixAdulteNuit = 20;
+                    prixEnfantNuit = 5;
                     break;
                 case "Parc du Mont-Orford":
                     cheminFichier = chemin + "Fichiers\\RESERV_ORFORD.txt";
+                    prixAdulteNuit = 15;
+                    prixEnfantNuit = 5;
                     break;
                 case "Camping du Rocher Percé":
                     cheminFichier = chemin + "Fichiers\\RESERV_PERCE.txt";
+                    prixAdulteNuit = 30;
+                    prixEnfantNuit = 10;
                     break;
                 case "Camping de la plage de St-Siméon":
                     cheminFichier = chemin + "Fichiers\\RESERV_SIMEON.txt";
+                    prixAdulteNuit = 25;
+                    prixEnfantNuit = 0;
                     break;
             }
 
@@ -133,14 +145,14 @@ namespace EricMarinTP2
                                 campingDispo[int.Parse(ligne[4]), ctr] = true;;
                             }
 
-                            uneReservation = new Reservation(int.Parse(ligne[0]), int.Parse(ligne[1]), DateTime.Parse(ligne[2]), DateTime.Parse(ligne[3]), int.Parse(ligne[4]), ligne[5], ligne[6], ligne[7], int.Parse(ligne[8]), int.Parse(ligne[9]), double.Parse(ligne[10]));
+                            uneReservation = new Reservation(int.Parse(ligne[0]), int.Parse(ligne[1]), DateTime.Parse(ligne[2]), DateTime.Parse(ligne[3]), int.Parse(ligne[4]), int.Parse(ligne[5]), int.Parse(ligne[6]), ligne[7], ligne[8], ligne[9], double.Parse(ligne[10]));
                             listReserv.Add(uneReservation);
 
                         }
 
                     } while (!lecteur.EndOfStream );
 
-
+                    lecteur.Close();
                 } catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
@@ -469,10 +481,20 @@ namespace EricMarinTP2
         private void faireLaRéservationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string textNom = textBoxNom.Text;
-            string textPrenom = textBoxPrenom.Text;
             string textCourriel = textBoxCourriel.Text;
+            int nbAdultes = (int) (numericUpDownAdulte.Value);
+            int nbEnfants = (int) (numericUpDownEnfants.Value);
+            int coutReserv = calculerCout(nbAdultes, nbEnfants);
+            int terrainChoisi = comboBoxTerrain.SelectedIndex;
+            string payement = comboBoxPaiement.Text;
 
-            
+            nombreReserv++;
+            uneReservation = new Reservation(nombreReserv, unCamping.NbCamping, dateTimePickerDebut.Value, dateTimePickerFin.Value, terrainChoisi, nbAdultes, nbEnfants, textNom, textCourriel, payement, coutReserv);
+            listReserv.Add(uneReservation);
+
+            ecrireReservations();
+            imprimerFacture(uneReservation);
+            toolStripStatusLabel1.Text = "Réservation sauvegardée dans le fichier";
         }
 
         private void verifFaireReservation()
@@ -494,7 +516,68 @@ namespace EricMarinTP2
 
         private void comboBoxPaiement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            verifDispo();
+            verifFaireReservation();
+        }
+
+        private void ecrireReservations()
+        {
+            if (File.Exists(cheminFichier))
+            {
+                try
+                {
+                    StreamWriter ecriture = new StreamWriter(cheminFichier, false);
+
+                    for (int i = 0; i < listReserv.Count; i++) 
+                    {
+
+                        if (listReserv[i] != null)
+                        {
+                            ecriture.WriteLine(listReserv[i].NumReservation + ";" + listReserv[i].NumCamping + ";" +
+                                listReserv[i].DebutReservation + ";" + listReserv[i].FinReservation + ";" + listReserv[i].TerrainChoisi + ";" +
+                                listReserv[i].NbAdultes + ";" + listReserv[i].NbEnfants + ";" + listReserv[i].NomClient + ";" + listReserv[i].Courriel + ";" +
+                                listReserv[i].TypePayement + ";" + listReserv[i].Cout);
+                        }
+
+                    }
+
+                    // fermer le fichier
+                    ecriture.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Le fichier " + cheminFichier + " n'existe pas.", "Écriture du fichier",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private int calculerCout(int adultes, int enfants)
+        {
+            string debutString = dateTimePickerDebut.Text;
+            string finString = dateTimePickerFin.Text;
+
+            DateTime debutDate = DateTime.Parse(debutString);
+            DateTime finDate = DateTime.Parse(finString);
+
+            int numJourDebut = debutDate.DayOfYear;
+            int numJourFin = finDate.DayOfYear;
+
+            int nbNuits = numJourFin - numJourDebut;
+
+            return nbNuits * ((adultes * prixAdulteNuit) + (enfants * prixEnfantNuit));
+        }
+
+        private void imprimerFacture(Reservation reserv)
+        {
+            textBoxFacture.Text = "ADULTES: " + reserv.NbAdultes + "\r\nENFANTS (0-17): " + reserv.NbEnfants + "\r\nTotal de personnes: " +
+                (reserv.NbAdultes + reserv.NbEnfants) + "\r\nNombre de nuits: " + (reserv.FinReservation.DayOfYear - reserv.DebutReservation.DayOfYear) + "\r\nCout total: " + reserv.Cout;
         }
     }
 }

@@ -83,6 +83,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProviderTerrains = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderAdultes = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderEnfants = new System.Windows.Forms.ErrorProvider(this.components);
@@ -96,6 +97,7 @@
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderTerrains)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderAdultes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEnfants)).BeginInit();
@@ -646,11 +648,20 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 478);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(818, 22);
             this.statusStrip1.TabIndex = 47;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // errorProviderTerrains
             // 
@@ -733,6 +744,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderTerrains)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderAdultes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEnfants)).EndInit();
@@ -808,5 +821,6 @@
         private ErrorProvider errorProviderPrenom;
         private ErrorProvider errorProviderCourriel;
         private ErrorProvider errorProviderTypeDePaiement;
+        private ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

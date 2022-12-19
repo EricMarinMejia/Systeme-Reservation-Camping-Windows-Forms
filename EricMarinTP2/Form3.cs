@@ -46,5 +46,18 @@ namespace EricMarinTP2
 
             pictureBoxCamping.ImageLocation = cheminImage;
         }
+
+        private void listBoxReservations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int pointeur = listBoxReservations.SelectedIndex;
+            Reservation reservSelectionne = tabReserv[pointeur];
+
+            textBoxDetails.Text = "Terrain choisi: " + (reservSelectionne.TerrainChoisi + 1) + "\r\nNombre d'adultes: " + reservSelectionne.NbAdultes + "\r\nNombre d'enfants: " + reservSelectionne.NbEnfants + "\r\nNombre de nuits: " + (reservSelectionne.FinReservation.DayOfYear - reservSelectionne.DebutReservation.DayOfYear) + "\r\nType de paiement: " + reservSelectionne.TypePayement + "\r\nCout total: " + reservSelectionne.Cout;
+        }
+
+        private void buttonQuitter_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

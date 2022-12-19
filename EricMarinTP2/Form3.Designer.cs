@@ -69,6 +69,7 @@
             this.listBoxReservations.Name = "listBoxReservations";
             this.listBoxReservations.Size = new System.Drawing.Size(219, 244);
             this.listBoxReservations.TabIndex = 23;
+            this.listBoxReservations.SelectedIndexChanged += new System.EventHandler(this.listBoxReservations_SelectedIndexChanged);
             // 
             // labelDetails
             // 
@@ -83,6 +84,7 @@
             // 
             // textBoxDetails
             // 
+            this.textBoxDetails.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxDetails.Location = new System.Drawing.Point(254, 37);
             this.textBoxDetails.Multiline = true;
             this.textBoxDetails.Name = "textBoxDetails";
@@ -108,10 +110,12 @@
             this.buttonQuitter.TabIndex = 27;
             this.buttonQuitter.Text = "Quitter";
             this.buttonQuitter.UseVisualStyleBackColor = true;
+            this.buttonQuitter.Click += new System.EventHandler(this.buttonQuitter_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Wheat;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.buttonQuitter);
             this.panel1.Controls.Add(this.pictureBoxCamping);
             this.panel1.Controls.Add(this.labelResevations);

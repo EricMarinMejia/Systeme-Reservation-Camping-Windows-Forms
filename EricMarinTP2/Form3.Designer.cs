@@ -134,6 +134,7 @@
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Affichage des réservations";
+            this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamping)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

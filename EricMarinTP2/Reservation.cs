@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EricMarinTP2
 {
-    internal class Reservation
+    public class Reservation
     {
         private int numReservation;
         private int numCamping;

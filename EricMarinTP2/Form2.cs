@@ -142,7 +142,7 @@ namespace EricMarinTP2
                             //Mettre à true les cases correspondantes et faire +1 pour le numéro de réservations
                             for (int ctr = numJourDebut; ctr < numJourFin; ctr++)
                             {
-                                campingDispo[int.Parse(ligne[4]), ctr] = true;;
+                                campingDispo[int.Parse(ligne[4]), ctr] = true;
                             }
 
                             uneReservation = new Reservation(int.Parse(ligne[0]), int.Parse(ligne[1]), DateTime.Parse(ligne[2]), DateTime.Parse(ligne[3]), int.Parse(ligne[4]), int.Parse(ligne[5]), int.Parse(ligne[6]), ligne[7], ligne[8], ligne[9], double.Parse(ligne[10]));
@@ -496,6 +496,22 @@ namespace EricMarinTP2
             uneReservation = new Reservation(nombreReserv, unCamping.NbCamping, dateTimePickerDebut.Value, dateTimePickerFin.Value, terrainChoisi, nbAdultes, nbEnfants, textNom, textCourriel, payement, coutReserv);
             listReserv.Add(uneReservation);
 
+
+            string debutString = dateTimePickerDebut.Text;
+            string finString = dateTimePickerFin.Text;
+            DateTime debutDate = DateTime.Parse(debutString);
+            DateTime finDate = DateTime.Parse(finString);
+
+            int numJourDebut = debutDate.DayOfYear;
+            int numJourFin = finDate.DayOfYear;
+
+            //Mettre à true les cases correspondantes et faire +1 pour le numéro de réservations
+            for (int ctr = numJourDebut; ctr < numJourFin; ctr++)
+            {
+                campingDispo[comboBoxTerrain.SelectedIndex, ctr] = true;
+            }
+
+
             ecrireReservations();
             imprimerFacture(uneReservation);
             toolStripStatusLabel1.Text = "Réservation sauvegardée dans le fichier";
@@ -586,6 +602,9 @@ namespace EricMarinTP2
 
         private void nouvelleRéservationToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            verifDispo();
+
             nomCorrect = true;
             prenomCorrect = true;
             courrielCorrect = true;

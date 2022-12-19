@@ -629,5 +629,11 @@ namespace EricMarinTP2
             errorProviderTerrains.Clear();
             errorProviderTypeDePaiement.Clear();
         }
+
+        private void afficherUneRéservationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 fenetre = new Form3(listReserv, unCamping.NomCamping, chemin + unCamping.CheminImage);
+            fenetre.ShowDialog();
+        }
     }
 }

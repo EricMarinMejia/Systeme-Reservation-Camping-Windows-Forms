@@ -32,7 +32,7 @@ namespace EricMarinTP2
             tabReserv = new Reservation[listReserv.Count];
         }
 
-        /*
+        
         private void Form3_Load(object sender, EventArgs e)
         {
             labelCamping.Text = nomCamping;
@@ -45,6 +45,6 @@ namespace EricMarinTP2
             listBoxReservations.Items.AddRange(tabReserv);
 
             pictureBoxCamping.ImageLocation = cheminImage;
-        }*/
+        }
     }
 }

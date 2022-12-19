@@ -101,5 +101,9 @@ namespace EricMarinTP2
             this.terrainChoisi = terrainChoisi;
         }
 
+        public override string ToString()
+        {
+            return "Réservation " + (numReservation + 1);
+        }
     }
 }

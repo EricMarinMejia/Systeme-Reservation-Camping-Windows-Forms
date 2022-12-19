@@ -67,7 +67,7 @@
             this.listBoxReservations.ItemHeight = 15;
             this.listBoxReservations.Location = new System.Drawing.Point(16, 37);
             this.listBoxReservations.Name = "listBoxReservations";
-            this.listBoxReservations.Size = new System.Drawing.Size(219, 169);
+            this.listBoxReservations.Size = new System.Drawing.Size(219, 244);
             this.listBoxReservations.TabIndex = 23;
             // 
             // labelDetails
@@ -87,7 +87,7 @@
             this.textBoxDetails.Multiline = true;
             this.textBoxDetails.Name = "textBoxDetails";
             this.textBoxDetails.ReadOnly = true;
-            this.textBoxDetails.Size = new System.Drawing.Size(176, 169);
+            this.textBoxDetails.Size = new System.Drawing.Size(176, 244);
             this.textBoxDetails.TabIndex = 25;
             // 
             // pictureBoxCamping

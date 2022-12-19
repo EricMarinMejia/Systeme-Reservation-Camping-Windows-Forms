@@ -456,24 +456,28 @@ namespace EricMarinTP2
             int numJourFin = finDate.DayOfYear;
             bool terrainOccupe = false;
 
-            //Mettre à true les cases correspondantes et faire +1 pour le numéro de réservations
-            for (int ctr = numJourDebut; ctr < numJourFin; ctr++)
+            if (comboBoxTerrain.SelectedIndex != -1)
             {
-                if (campingDispo[comboBoxTerrain.SelectedIndex, ctr] == true)
+                //Mettre à true les cases correspondantes et faire +1 pour le numéro de réservations
+                for (int ctr = numJourDebut; ctr < numJourFin; ctr++)
                 {
-                    terrainOccupe = true;
+                    if (campingDispo[comboBoxTerrain.SelectedIndex, ctr] == true)
+                    {
+                        terrainOccupe = true;
+                    }
+                }
+
+                if (!terrainOccupe)
+                {
+                    errorProviderTerrains.Clear();
+                    terrainCorrect = true;
+                }
+                else
+                {
+                    errorProviderTerrains.SetError(comboBoxTerrain, "Le terrain est déjà occupé");
+                    terrainCorrect = false;
                 }
             }
-
-            if (!terrainOccupe) {
-                errorProviderTerrains.Clear();
-                terrainCorrect = true;
-            } else
-            {
-                errorProviderTerrains.SetError(comboBoxTerrain, "Le terrain est déjà occupé");
-                terrainCorrect = false;
-            }
-
             verifFaireReservation();
 
         }
@@ -578,6 +582,33 @@ namespace EricMarinTP2
         {
             textBoxFacture.Text = "ADULTES: " + reserv.NbAdultes + "\r\nENFANTS (0-17): " + reserv.NbEnfants + "\r\nTotal de personnes: " +
                 (reserv.NbAdultes + reserv.NbEnfants) + "\r\nNombre de nuits: " + (reserv.FinReservation.DayOfYear - reserv.DebutReservation.DayOfYear) + "\r\nCout total: " + reserv.Cout;
+        }
+
+        private void nouvelleRéservationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nomCorrect = true;
+            prenomCorrect = true;
+            courrielCorrect = true;
+            nbPersonnesCorrect = true;
+            terrainCorrect = true;
+
+            textBoxFacture.Clear();
+            comboBoxTerrain.SelectedIndex = -1;
+            numericUpDownAdulte.Value = 0;
+            numericUpDownEnfants.Value = 0;
+            textBoxNom.Clear();
+            textBoxPrenom.Clear();
+            textBoxCourriel.Clear();
+            comboBoxPaiement.SelectedIndex = -1;
+            toolStripStatusLabel1.Text = "";
+
+            errorProviderAdultes.Clear();
+            errorProviderCourriel.Clear();
+            errorProviderEnfants.Clear();
+            errorProviderNom.Clear();
+            errorProviderPrenom.Clear();
+            errorProviderTerrains.Clear();
+            errorProviderTypeDePaiement.Clear();
         }
     }
 }

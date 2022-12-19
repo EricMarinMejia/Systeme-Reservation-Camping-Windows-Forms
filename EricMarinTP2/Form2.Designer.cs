@@ -278,6 +278,7 @@
             // 
             // textBoxFacture
             // 
+            this.textBoxFacture.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxFacture.Location = new System.Drawing.Point(347, 231);
             this.textBoxFacture.Multiline = true;
             this.textBoxFacture.Name = "textBoxFacture";
@@ -489,6 +490,7 @@
             this.nouvelleRéservationToolStripMenuItem.Name = "nouvelleRéservationToolStripMenuItem";
             this.nouvelleRéservationToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.nouvelleRéservationToolStripMenuItem.Text = "Nouvelle réservation";
+            this.nouvelleRéservationToolStripMenuItem.Click += new System.EventHandler(this.nouvelleRéservationToolStripMenuItem_Click);
             // 
             // faireLaRéservationToolStripMenuItem
             // 

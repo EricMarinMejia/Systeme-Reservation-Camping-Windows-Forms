@@ -339,7 +339,8 @@ namespace EricMarinTP2
             {
                 errorProviderNom.Clear();
             }
-            
+
+            verifFaireReservation();
         }
 
         private void textBoxPrenom_TextChanged(object sender, EventArgs e)
@@ -368,6 +369,8 @@ namespace EricMarinTP2
             {
                 errorProviderPrenom.Clear();
             }
+
+            verifFaireReservation();
         }
 
         private void textBoxCourriel_TextChanged(object sender, EventArgs e)
@@ -392,6 +395,8 @@ namespace EricMarinTP2
                 errorProviderCourriel.SetError(textBoxCourriel, "Le courriel doit contenir @ et ne peut pas être vide");
                 courrielCorrect = false;
             }
+
+            verifFaireReservation();
         }
 
         private void numericUpDownAdulte_ValueChanged(object sender, EventArgs e)
@@ -416,6 +421,8 @@ namespace EricMarinTP2
                 errorProviderAdultes.Clear();
                 errorProviderEnfants.Clear();
             }
+
+            verifFaireReservation();
 
         }
 
@@ -455,6 +462,39 @@ namespace EricMarinTP2
                 terrainCorrect = false;
             }
 
+            verifFaireReservation();
+
+        }
+
+        private void faireLaRéservationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string textNom = textBoxNom.Text;
+            string textPrenom = textBoxPrenom.Text;
+            string textCourriel = textBoxCourriel.Text;
+
+            
+        }
+
+        private void verifFaireReservation()
+        {
+            string textNom = textBoxNom.Text;
+            string textPrenom = textBoxPrenom.Text;
+            string textCourriel = textBoxCourriel.Text;
+
+            if (comboBoxPaiement.SelectedIndex != -1 && comboBoxTerrain.SelectedIndex != -1 && textNom.Trim() != "" && textPrenom.Trim() != "" && textCourriel.Trim() != "" &&
+                numericUpDownAdulte.Value + numericUpDownEnfants.Value != 0 && nomCorrect == true && prenomCorrect == true && courrielCorrect == true && nbPersonnesCorrect == true && terrainCorrect == true)
+            {
+                faireLaRéservationToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                faireLaRéservationToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void comboBoxPaiement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            verifDispo();
         }
     }
 }

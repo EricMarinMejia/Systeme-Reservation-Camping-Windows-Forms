@@ -262,6 +262,7 @@
             this.comboBoxPaiement.Name = "comboBoxPaiement";
             this.comboBoxPaiement.Size = new System.Drawing.Size(273, 23);
             this.comboBoxPaiement.TabIndex = 14;
+            this.comboBoxPaiement.SelectedIndexChanged += new System.EventHandler(this.comboBoxPaiement_SelectedIndexChanged);
             // 
             // pictureBoxCamping
             // 
@@ -489,9 +490,11 @@
             // 
             // faireLaRéservationToolStripMenuItem
             // 
+            this.faireLaRéservationToolStripMenuItem.Enabled = false;
             this.faireLaRéservationToolStripMenuItem.Name = "faireLaRéservationToolStripMenuItem";
             this.faireLaRéservationToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.faireLaRéservationToolStripMenuItem.Text = "Faire la réservation";
+            this.faireLaRéservationToolStripMenuItem.Click += new System.EventHandler(this.faireLaRéservationToolStripMenuItem_Click);
             // 
             // afficherUneRéservationToolStripMenuItem
             // 
